@@ -10,8 +10,10 @@ if (process.env.NODE_ENV === "production") {
     mongoURI = "mongodb://localhost/walk-it-out";
   }
 
-mongoose.connect(mongoURI)
-    .then(connection => console.log('Connection established!'))
+mongoose.connect(mongoURI, { useNewUrlParser: true })
+.then((conn) => {
+	console.log(`connected to mongodb on ${conn.connections[0].name} db`)
+})
     .catch(err => console.log('Connection failed!', err))
 
 module.exports = mongoose
