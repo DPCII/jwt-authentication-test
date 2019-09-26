@@ -15,4 +15,8 @@ app.use(passport.initialize())
 app.use('/users', userController)
 app.use('/api/dogs', dogController)
 
-app.listen(3001, () => console.log('Listening on port 3001 :)'))
+app.set("port", process.env.PORT || 8080);
+
+app.listen(app.get("port"), () => {
+  console.log(`✅ PORT: ${app.get("port")} 🌟`);
+});
